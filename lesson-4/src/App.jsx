@@ -79,17 +79,32 @@ const App = ()=> {
   
 // )
 
-const [number, setNumber] = useState()
+const [number, setNumber] = useState("")
+const [data, setdata] = useState({})
 
+async function fetchData (){
+  const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${number}`)
+  const list = await response.json()
+  setdata(list)
+}
+
+
+// useEffect (()=>{
+//   fetchData()
+//   console.log(data)
+// },[number])
 
 
 
 return (
   <div>
-   {number}
+   number : {number}
    <br/>
-  <input type="text" onChange={(event) => setNumber(event.target.value)}/>
-  <button >Search</button>
+   title : {data.title}
+   <br/>
+  <input type="number" onChange={(event) => setNumber(event.target.value)}/>
+  <button onClick={()=>fetchData()}>Search</button>
+  {console.log(data)}
   </div>
   
 )
