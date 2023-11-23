@@ -89,6 +89,8 @@ async function fetchData (){
 }
 
 
+
+
 // useEffect (()=>{
 //   fetchData()
 //   console.log(data)
@@ -103,7 +105,7 @@ return (
    title : {data.title}
    <br/>
   <input type="number" onChange={(event) => setNumber(event.target.value)}/>
-  <button onClick={()=>fetchData()}>Search</button>
+  <button onClick={ number < 10 ? ()=>fetchData() : alert('max - 10')}>Search</button>
   {console.log(data)}
   </div>
   
